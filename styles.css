@@ -1,0 +1,99 @@
+@font-face {
+  font-family: 'YouTube Sans';
+  src: url('./fonts/YouTubeSansBoldTransformed.otf') format('opentype');
+}
+
+@font-face {
+  font-family: 'Apple Emoji';
+  src: url('./fonts/AppleColorEmoji.ttf') format('truetype');
+}
+
+body {
+  background-color: #2b2b2b;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  font-family: 'YouTube Sans', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 600px;
+  width: 100%;
+}
+
+.goo {
+  filter: url('#instagram');
+  text-align: center;
+  padding: 5px;            /* Adds a safety buffer around the text */
+  display: inline-block;    /* Ensures padding is respected during capture */
+}
+
+.works_title {
+  display: inline;
+  padding: 0px 8px;
+  line-height: 1.4;
+  font-size: 32px;
+  font-weight: 700;
+  color: black;
+  background-color: white;
+  border-radius: 4px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  outline: none;
+  cursor: text;
+  text-align: center;
+  
+  /* IMPORTANT NOTE: Apple Emoji must come before other emoji fallbacks */
+  font-family: 'YouTube Sans', 'Apple Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+#saveBtn {
+  padding: 12px 20px;
+  background-color: #f0f0f0;
+  color: #0f0f0f;
+  font-weight: 600;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#saveBtn:hover {
+  background: rgb(199, 199, 199);
+}
+
+.emoji-keyboard {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+  gap: 8px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.emoji-btn {
+  font-size: 32px;
+  line-height: 1.4;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 8px;
+  font-family: 'Apple Emoji', sans-serif;
+  transition: background 0.2s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.emoji-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+}

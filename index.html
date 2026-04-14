@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Youtube Caption Creator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/html-to-image@1.11.11/dist/html-to-image.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+  <div class="goo" id="capture">
+    <svg style="visibility: hidden; position: absolute;" width="0" height="0">
+      <defs>
+        <filter id="instagram">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>    
+          <feColorMatrix in="blur" mode="matrix"
+            values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 20 -8" result="goo" />
+          <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+        </filter>
+      </defs>
+    </svg>
+
+    <div class="works_title" id="textBox" contenteditable="true">
+      Jude used his 200iq brain<br>here 😱🔥🔥
+    </div>
+  </div>
+
+  <button id="saveBtn">Save to PNG</button>
+
+  <div class="emoji-keyboard" id="emojiKeyboard"></div>
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
