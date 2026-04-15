@@ -52,10 +52,3 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
         console.error("Export failed:", error);
     }
 });
-
-// Perform a silent render to cache fonts/styles - this prevents the first image save from being blank due to race conditions
-window.addEventListener('load', () => {
-    htmlToImage.toBlob(document.getElementById("capture"), { quality: 0.1 })
-        .then(() => console.log("Renderer primed"))
-        .catch(err => console.warn("Priming failed", err));
-});

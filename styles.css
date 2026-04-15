@@ -37,13 +37,12 @@ body {
 
 .works_title {
   display: inline;
-  padding: 0px 8px;
-  line-height: 1.4;
+  padding: 0px 12px;
+  line-height: 1.25;
   font-size: 32px;
   font-weight: 700;
   color: black;
   background-color: white;
-  border-radius: 4px;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   outline: none;
