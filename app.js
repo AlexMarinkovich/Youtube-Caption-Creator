@@ -8,17 +8,11 @@ const emojis = [
 const textBox = document.getElementById('textBox');
 const keyboard = document.getElementById('emojiKeyboard');
 
-emojis.forEach(emoji => {
-const btn = document.createElement('button');
-btn.className = 'emoji-btn';
-btn.textContent = emoji;
-btn.onclick = () => {
-    textBox.focus();
-    document.execCommand('insertText', false, emoji);
-};
-keyboard.appendChild(btn);
+textBox.addEventListener('input', () => {
+    console.log(textBox.getHTML())
 });
 
+// Save button logic
 document.getElementById("saveBtn").addEventListener("click", async () => {
     const node = document.getElementById("capture");
     try {
@@ -51,4 +45,16 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
     } catch (error) {
         console.error("Export failed:", error);
     }
+});
+
+// Emoji keyboard logic
+emojis.forEach(emoji => {
+const btn = document.createElement('button');
+btn.className = 'emoji-btn';
+btn.textContent = emoji;
+btn.onclick = () => {
+    textBox.focus();
+    document.execCommand('insertText', false, emoji);
+};
+keyboard.appendChild(btn);
 });

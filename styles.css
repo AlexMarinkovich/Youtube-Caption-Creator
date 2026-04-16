@@ -35,7 +35,7 @@ body {
   display: inline-block;    /* Ensures padding is respected during capture */
 }
 
-.works_title {
+.text-input {
   display: inline;
   padding: 0px 12px;
   line-height: 1.25;
