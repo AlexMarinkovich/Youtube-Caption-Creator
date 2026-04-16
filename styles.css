@@ -1,11 +1,11 @@
 @font-face {
   font-family: 'YouTube Sans';
-  src: url('./fonts/YouTubeSansBoldTransformed.otf') format('opentype');
+  src: url('src/YouTubeSansBoldTransformed.otf') format('opentype');
 }
 
 @font-face {
   font-family: 'Apple Emoji';
-  src: url('./fonts/AppleColorEmoji.ttf') format('truetype');
+  src: url('src/AppleColorEmoji.ttf') format('truetype');
 }
 
 body {
