@@ -3,6 +3,7 @@ const emojis = [
 "😀","😃","😄","😁","😆","😅","😂","🤣","😊","😇","🙂",
 "🙃","😉","😍","😘","😗","😙","😚","😋","😛","😜","🤪",
 "🤨","🧐","🤓","😎","🥳","😡","👍","👎","👏","🙌","❤️",
+"🤑",
 ];
 
 const textBox = document.getElementById('textBox');
@@ -21,6 +22,15 @@ textBox.addEventListener('input', () => {
     console.log(textBox.getHTML());
     console.log(textUnderlay.getHTML());
 });
+
+// Force `paste as plain text`
+textBox.addEventListener("paste", (e) => {
+    e.preventDefault();
+  
+    const text = (e.clipboardData || window.clipboardData).getData("text/plain");
+  
+    document.execCommand("insertText", false, text);
+  });
 
 // Emoji keyboard logic
 emojis.forEach(emoji => {
