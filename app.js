@@ -7,9 +7,31 @@ const emojis = [
 
 const textBox = document.getElementById('textBox');
 const keyboard = document.getElementById('emojiKeyboard');
+const textUnderlay = document.getElementById('textUnderlay');
 
+// Initial sync
+textUnderlay.innerHTML = textBox.innerHTML.replace(/<br\s*\/?>$/i, "");
+
+// Sync the textbox with the white underlay
 textBox.addEventListener('input', () => {
-    console.log(textBox.getHTML())
+    // remove ONE trailing <br> for the white underlay (so the shape doesn't glitch)
+    textUnderlay.innerHTML = textBox.innerHTML.replace(/<br\s*\/?>$/i, "");
+
+    // Log for debugging as you had before
+    console.log(textBox.getHTML());
+    console.log(textUnderlay.getHTML());
+});
+
+// Emoji keyboard logic
+emojis.forEach(emoji => {
+    const btn = document.createElement('button');
+    btn.className = 'emoji-btn';
+    btn.textContent = emoji;
+    btn.onclick = () => {
+        textBox.focus();
+        document.execCommand('insertText', false, emoji);
+    };
+    keyboard.appendChild(btn);
 });
 
 // Save button logic
@@ -18,9 +40,9 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
     try {
         // html-to-image will look for the font-family defined in the CSS
         const blob = await htmlToImage.toBlob(node, {
-        backgroundColor: null,
-        pixelRatio: 3,
-        cacheBust: true,
+            backgroundColor: null,
+            pixelRatio: 3,
+            cacheBust: true,
         });
 
         if ('showSaveFilePicker' in window) {
@@ -45,16 +67,4 @@ document.getElementById("saveBtn").addEventListener("click", async () => {
     } catch (error) {
         console.error("Export failed:", error);
     }
-});
-
-// Emoji keyboard logic
-emojis.forEach(emoji => {
-const btn = document.createElement('button');
-btn.className = 'emoji-btn';
-btn.textContent = emoji;
-btn.onclick = () => {
-    textBox.focus();
-    document.execCommand('insertText', false, emoji);
-};
-keyboard.appendChild(btn);
 });

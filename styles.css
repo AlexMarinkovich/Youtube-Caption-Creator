@@ -28,11 +28,10 @@ body {
   width: 100%;
 }
 
-.goo {
-  filter: url('#instagram');
+.input-wrapper {
+  position: relative;
+  display: inline-block;
   text-align: center;
-  padding: 5px;            /* Adds a safety buffer around the text */
-  display: inline-block;    /* Ensures padding is respected during capture */
 }
 
 .text-input {
@@ -41,16 +40,29 @@ body {
   line-height: 1.25;
   font-size: 32px;
   font-weight: 700;
-  color: black;
-  background-color: white;
+  color: rgba(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
   outline: none;
-  cursor: text;
   text-align: center;
-  
-  /* IMPORTANT NOTE: Apple Emoji must come before other emoji fallbacks */
   font-family: 'YouTube Sans', 'Apple Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+}
+
+.filter-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: url('#curve-filter');
+  pointer-events: none;
+  text-align: center;
+  display: inline-block;    /* Ensures padding is respected during capture */
+  z-index: -1;
+}
+
+.text-underlay {
+  /* Inherits styles from .text-input but overrides colors */
+  background-color: rgb(255, 255, 255);
 }
 
 #saveBtn {

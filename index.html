@@ -11,18 +11,23 @@
 <body>
 
 <div class="container">
-  <div class="goo" id="capture">
+  <div class="input-wrapper" id="capture">
+
+    <div class="text-input" id="textBox" contenteditable="true" spellcheck="false">Jude used his 200iq brain<br>here 😱🔥🔥<br></div>
+
     <svg style="visibility: hidden; position: absolute;" width="0" height="0">
       <defs>
-        <filter id="instagram">
-          <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="blur"/>    
-          <feColorMatrix in="blur" mode="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 25 -18" result="goo"/>
-          <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+        <filter id="curve-filter">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4.5" result="blur"/>
+          <feColorMatrix in="blur" mode="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 25 -18" result="mask"/>
+          <feComposite in="SourceGraphic" in2="mask" operator="atop"/>
         </filter>
       </defs>
     </svg>
-    
-    <div class="text-input" id="textBox" contenteditable="true" spellcheck="false">Jude used his 200iq brain<br>here 😱🔥🔥</div>
+
+    <div class="filter-layer">
+      <div class="text-input text-underlay" id="textUnderlay"></div>
+    </div>
   </div>
 
   <button id="saveBtn">Save to PNG</button>
