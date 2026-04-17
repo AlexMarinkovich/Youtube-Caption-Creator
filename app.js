@@ -48,7 +48,10 @@ emojis.forEach(emoji => {
 document.getElementById("saveBtn").addEventListener("click", async () => {
     const node = document.getElementById("capture");
     try {
-        // html-to-image will look for the font-family defined in the CSS
+        // This dummy call forces the fonts to load into the html-to-image SVG context
+        await htmlToImage.toBlob(node, { cacheBust: true });
+
+        // Now run the actual capture
         const blob = await htmlToImage.toBlob(node, {
             backgroundColor: null,
             pixelRatio: 3,
