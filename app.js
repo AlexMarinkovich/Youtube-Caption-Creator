@@ -18,19 +18,24 @@ textBox.addEventListener('input', () => {
     // remove ONE trailing <br> for the white underlay (so the shape doesn't glitch)
     textUnderlay.innerHTML = textBox.innerHTML.replace(/<br\s*\/?>$/i, "");
 
-    // Log for debugging as you had before
+    // Log for debugging
     console.log(textBox.getHTML());
     console.log(textUnderlay.getHTML());
+});
+
+// Intercept and prevent backspaces if the underlay is already blank
+textBox.addEventListener('keydown', (e) => {
+    if (e.key === 'Backspace' && textUnderlay.innerHTML === "") {
+        e.preventDefault(); // Stops the backspace from deleting the remaining <br>
+    }
 });
 
 // Force `paste as plain text`
 textBox.addEventListener("paste", (e) => {
     e.preventDefault();
-  
     const text = (e.clipboardData || window.clipboardData).getData("text/plain");
-  
     document.execCommand("insertText", false, text);
-  });
+});
 
 // Emoji keyboard logic
 emojis.forEach(emoji => {
